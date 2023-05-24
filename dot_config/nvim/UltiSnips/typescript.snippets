@@ -1,0 +1,61 @@
+snippet tpmet "Typescript public method"
+public $1($2):$3{
+	$0
+}
+endsnippet
+
+snippet tpamet "Typescript public async method"
+public async $1($2):Public<$3>{
+	$0
+}
+endsnippet
+
+snippet exclass "Create an exported class" b
+export class $1 {
+	$0
+}
+endsnippet
+
+snippet if "if(v)" b
+if ($1){
+	$0
+}
+endsnippet
+
+snippet ifels "if(v){}else{}" b
+if ($1){
+	$2
+} else {
+	$0
+}
+endsnippet
+
+snippet fori "for(let i; i < N; i++)" b
+for (let $1 = 0; $1 < $2; $1++){
+	$0
+}
+endsnippet
+
+snippet exall "Export all from ''" b
+export * from '${1: source of the code}';
+endsnippet
+
+snippet trycatch "try{/*Some code*/} catch(e){/*Error handling*/}" b
+try {
+	${1: /*Insecure code here*/}
+} catch(${2: err}){
+	${3: /*Error handling here*/}
+}
+endsnippet
+
+snippet forof "for (const item of list)" b
+for (const ${1:item} of ${2:list}){
+	${0:Content}
+}
+endsnippet
+
+snippet exum "export enum" b
+export enum ${1:EnumName} {
+	${0:Values}
+}
+endsnippet
