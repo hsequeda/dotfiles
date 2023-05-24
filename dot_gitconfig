@@ -1,0 +1,51 @@
+[user]
+	email = henrysg88@gmail.com
+	name = Henry
+[core]
+	autocrlf = input
+    pager = "delta --dark"
+[alias]
+	lg = log --oneline --decorate --all --graph
+	s = status -sb
+	co = checkout
+	fall = fetch
+	rec = rebase --continue
+	re = rebase
+	resk = rebase --skip
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+
+# define command which will be used when "nvim" is set as a merge tool
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
+# set "nvim" as tool for merging
+[merge]
+	tool = nvim
+	# autometically launch merge tool without displaying a prompt
+[mergetool]
+	prompt = false
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features = decorations
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+[safe]
+	directory = /home/hsequeda_i3/Programing/Godev/trk-schema
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true

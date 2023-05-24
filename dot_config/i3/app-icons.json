@@ -1,0 +1,17 @@
+{
+  "firefox": "firefox",
+  "chromium-browser": "chrome",
+  "chrome": "chrome",
+  "Brave-browser": "brave",
+  "telegram": "dollar",
+  "skype": "skype",
+  "google-chrome": "chrome",
+  "Alacritty": "terminal",
+  "thunderbird": "envelope",
+  "jetbrains-idea-ce": "edit",
+  "Org.gnome.Nautilus": "folder",
+  "Rhythmbox": "music",
+  "vlc": "vlc",
+  "signal": "comment",
+  "_no_match": "question"
+}

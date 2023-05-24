@@ -1,0 +1,40 @@
+#! /bin/sh
+
+pkill sxhkd
+sxhkd &
+
+setxkbmap -layout us -variant intl
+
+pkill polybar
+sh /home/hsequeda_i3/.config/polybar/launch.sh --forest &
+
+# pkill picom
+# picom -f --daemon --config "${HOME}/.config/picom/picom.conf" &
+
+pkill dunst; dunst &
+
+feh --bg-scale /home/hsequeda_i3/Pictures/wallpaper.png
+
+## With one monitors (laptop monitor)
+bspc monitor eDP-1 -d I II III IV V VI VII VIII IX X
+
+## With one monitors (external monitor)
+# bspc monitor HDMI-1 -d I II III IV V VI VII VIII IX X
+
+## With two monitors
+# bspc monitor HDMI-1 -d VI VII VIII IX X
+# bspc monitor eDP-1 -d  I II III IV V
+
+bspc config border_width         3
+bspc config window_gap          10
+bspc config focused_border_color \#7b4e9c
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chromium desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
