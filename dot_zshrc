@@ -2,9 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/hsequeda_i3/.oh-my-zsh"
+export ZSH="/home/hsequeda/.oh-my-zsh"
 
-export PATH="$HOME/go/bin:/usr/local/go/bin:$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/go/bin:$HOME/bin:/usr/local/go/bin:$HOME/.yarn/bin:$PATH"
 export GOPATH="$HOME/go"
 export JDK_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
 # Set name of the theme to load --- if set to "random", it will
@@ -64,18 +64,13 @@ alias lg=lazygit
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-
-alias ls="exa"
-
-alias dotdrop="/home/hsequeda_i3/dotfiles/dotdrop.sh"
-
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
-alias luamake=/home/hsequeda_i3/lua-language-server/3rd/luamake/luamake
-source /home/hsequeda_i3/.config/broot/launcher/bash/br
+alias luamake=/home/hsequeda/lua-language-server/3rd/luamake/luamake
+source /home/hsequeda/.config/broot/launcher/bash/br
 
 
 eval "$(atuin init zsh)"

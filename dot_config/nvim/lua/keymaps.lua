@@ -34,17 +34,7 @@ map('n', 'gp', '`[v`]', {})
 -- Applications & Plugins shortcuts:
 -----------------------------------------------------------
 
-
--- -- Vista tag-viewer
--- map('n', '<leader>m', ':Vista!!<CR>', default_opts)   -- open/close
-
--- nvim-tree
-map('n', '<m-1>', ':NvimTreeToggle<CR>', default_opts) -- open/close
-map('n', '<leader>r', ':NvimTreeRefresh<CR>', default_opts) -- refresh
-map('n', '<leader>n', ':NvimTreeFindFile<CR>', default_opts) -- search file
-
 -- Vim-Maximizer
-
 map('','<C-w>m', ':MaximizerToggle<CR>', default_opts)
 
 -- Buffer-Only

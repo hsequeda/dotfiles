@@ -32,6 +32,12 @@ require("lazy").setup({
 		end
 	},
   {
+    "sidebar-nvim/sidebar.nvim",
+    config = function ()
+      require('config.sidebar-nvim')
+    end
+  },
+  {
     'simrat39/symbols-outline.nvim',
     config = function ()
       require('config.symbols-outline')
@@ -136,14 +142,6 @@ require("lazy").setup({
     end
   },
   "nvim-treesitter/nvim-tree-docs",
-
-  -- color-scheme
-  -- {
-  --   "sainnhe/gruvbox-material",
-  --   config = function()
-  --     require("config.gruvbox-material")
-  --   end
-  -- },
   {
     "catppuccin/nvim",
     config = function ()
@@ -318,21 +316,6 @@ require("lazy").setup({
   {
     "theHamsta/nvim-dap-virtual-text",
   },
-	-- test
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-      "nvim-neotest/neotest-go",
-		},
-    config = function ()
-      require("config.neotest")
-    end
-	},
-
-
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -366,26 +349,4 @@ require("lazy").setup({
       })
     end
   },
-  {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("config.chatgpt-nvim")
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-  }
-}
-
-  -- Rust
-  -- {
-  --       "simrat39/rust-tools.nvim",
-  --       config = function()
-  --           require("config.rust-tools")
-  --       end,
-  --   },
-
 })
-
