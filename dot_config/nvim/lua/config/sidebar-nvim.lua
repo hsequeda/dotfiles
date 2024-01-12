@@ -5,7 +5,7 @@ sidebar.setup({
   open = false,
   side = 'right',
   -- sections = { "datetime", "git", "diagnostics", "symbols" },
-  sections = { "symbols" },
+  sections = { "git", "diagnostics", "symbols" },
   symbols = {
     icon = "ƒ",
   },

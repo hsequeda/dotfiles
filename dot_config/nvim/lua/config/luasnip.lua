@@ -143,10 +143,10 @@ ls.add_snippets("go", {
       ]],
       {
         receiver = i(1, "receiver"),
-        type = i(0, "type"),
-        name = i(0, "name"),
-        params = i(0, "params"),
-        returns = i(0, "returns"),
+        type = i(2, "type"),
+        name = i(3, "name"),
+        params = i(4, "params"),
+        returns = i(5, "returns"),
         body = i(0, "body"),
       },
       {

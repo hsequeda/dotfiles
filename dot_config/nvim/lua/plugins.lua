@@ -142,10 +142,18 @@ require("lazy").setup({
     end
   },
   "nvim-treesitter/nvim-tree-docs",
+
+  -- Theme
+  -- {
+  --   "catppuccin/nvim",
+  --   config = function ()
+  --     require('config.catppuccin')
+  --   end
+  -- },
   {
-    "catppuccin/nvim",
+    "EdenEast/nightfox.nvim",
     config = function ()
-      require('config.catppuccin')
+      require('config.nightfox')
     end
   },
 

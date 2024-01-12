@@ -24,7 +24,6 @@ sumneko_binary = "/usr/bin/lua-language-server"
 nvim_lsp.lua_ls.setup {
     on_attach = base_conf.on_attach,
     capabilities = base_conf.capabilities,
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
             runtime = {

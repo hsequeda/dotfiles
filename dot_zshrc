@@ -1,11 +1,38 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+
+####################################################################################################
+##                                                                                                ##
+##  ██████╗  █████╗ ████████╗██╗  ██╗    ███████╗███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗  ##
+##  ██╔══██╗██╔══██╗╚══██╔══╝██║  ██║    ██╔════╝██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║  ##
+##  ██████╔╝███████║   ██║   ███████║    ███████╗█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║  ##
+##  ██╔═══╝ ██╔══██║   ██║   ██╔══██║    ╚════██║██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║  ##
+##  ██║     ██║  ██║   ██║   ██║  ██║    ███████║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║  ##
+##  ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝    ╚══════╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝  ##
+##                                                                                                ##
+####################################################################################################
+
+# Add go binaries to PATH
+export PATH="$HOME/go/bin:/usr/local/go/bin:$PATH"
+
+# Add yarn binaries to PATH
+export PATH="$HOME/.yarn/bin:$PATH"
+
+# Add local binaries to PATH
+export PATH="$HOME/bin:$PATH"
+
+# Add cargo binaries to PATH
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Add DbSchema to path
+export PATH="/opt/DbSchema:$PATH"
+
+# Other Paths
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/hsequeda/.oh-my-zsh"
 
-export PATH="$HOME/go/bin:$HOME/bin:/usr/local/go/bin:$HOME/.yarn/bin:$PATH"
 export GOPATH="$HOME/go"
+
 export JDK_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -64,7 +91,8 @@ alias lg=lazygit
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-[[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"
+alias kitty='kitty +kitten themes --reload-in=all Nightfox'
+alias zellij='zellij options --theme nightfox'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
@@ -74,3 +102,5 @@ source /home/hsequeda/.config/broot/launcher/bash/br
 
 
 eval "$(atuin init zsh)"
+
+export GOPRIVATE=github.com/msales

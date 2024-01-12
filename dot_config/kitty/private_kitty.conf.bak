@@ -200,6 +200,6 @@ macos_hide_titlebar no
 
 
 # BEGIN_KITTY_THEME
-# Nightfox
+# Catppuccin-Mocha
 include current-theme.conf
 # END_KITTY_THEME
