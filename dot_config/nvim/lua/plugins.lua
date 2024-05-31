@@ -156,7 +156,8 @@ require("lazy").setup({
     end
   },
   {"rebelot/kanagawa.nvim"},
-  {"rebelot/kanagawa.nvim"},
+  {"tanvirtin/monokai.nvim"},
+
 
   -- fuzzy finder
   "nvim-lua/popup.nvim",
