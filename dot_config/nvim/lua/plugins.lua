@@ -15,8 +15,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-
-	"samjwill/nvim-unception",
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+  },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -31,12 +34,6 @@ require("lazy").setup({
 			require("config.neo-tree")
 		end
 	},
-  {
-    "sidebar-nvim/sidebar.nvim",
-    config = function ()
-      require('config.sidebar-nvim')
-    end
-  },
   {
     'simrat39/symbols-outline.nvim',
     config = function ()
@@ -68,6 +65,7 @@ require("lazy").setup({
       require('config.lsp.graphql')
       require('config.lsp.html')
       require('config.lsp.css')
+      require('config.lsp.zig')
 		end
 	},
 	{
@@ -97,9 +95,10 @@ require("lazy").setup({
       {
         "L3MON4D3/LuaSnip",
         event = "VeryLazy",
+        version = "v2.*",
         build = "make install_jsregexp",
         config = function ()
-          require("config.luasnip")
+          require('config.luasnip')
         end
       },
       {
@@ -134,6 +133,7 @@ require("lazy").setup({
 
   -- nvim-treesitter
   "nvim-treesitter/nvim-treesitter-textobjects",
+  "nvim-treesitter/nvim-tree-docs",
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = true,
@@ -141,21 +141,22 @@ require("lazy").setup({
       require("config.nvim-treesitter")
     end
   },
-  "nvim-treesitter/nvim-tree-docs",
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function ()
+      require("config.nvim-treesitter-context")
+    end
+  },
 
   -- Theme
-  -- {
-  --   "catppuccin/nvim",
-  --   config = function ()
-  --     require('config.catppuccin')
-  --   end
-  -- },
   {
     "EdenEast/nightfox.nvim",
     config = function ()
       require('config.nightfox')
     end
   },
+  {"rebelot/kanagawa.nvim"},
+  {"rebelot/kanagawa.nvim"},
 
   -- fuzzy finder
   "nvim-lua/popup.nvim",
@@ -180,7 +181,6 @@ require("lazy").setup({
     end
   },
   "nvim-telescope/telescope-dap.nvim",
-
 
   -- documentation
   {
@@ -230,33 +230,61 @@ require("lazy").setup({
   },
 
   {
-    'akinsho/bufferline.nvim',
+    'nanozuki/tabby.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    event = 'VimEnter',
     config = function ()
-      require("bufferline").setup {
-        options = {
-          mode = 'buffers',
-          diagnostics = "nvim_lsp",
-          diagnostics_indicator = function(count, level, _, _)
-            local icon = level:match("error") and " " or " "
-            return " " .. icon .. count
+      vim.o.showtabline = 2
+      require('tabby.tabline').use_preset('active_wins_at_tail', {
+        theme = {
+          fill = 'TabLineFill',       -- tabline background
+          head = 'TabLine',           -- head element highlight
+          current_tab = 'TabLineSel', -- current tab label highlight
+          tab = 'TabLine',            -- other tab label highlight
+          win = 'TabLine',            -- window highlight
+          tail = 'TabLine',           -- tail element highlight
+        },
+        nerdfont = true,              -- whether use nerdfont
+        lualine_theme = nil,          -- lualine theme name
+        tab_name = {
+          name_fallback = function(tabid)
+            return tabid
           end,
-          numbers = 'buffer_id',
-          separator_style = 'slant',
-          highlights = {
-            buffer_selected = {
-              fg = '#663322',
-              italic = true,
-            },
-          },
-          hover = {
-            enable = true,
-            delay = 200,
-            reveal = {'close'}
-          }
-        }
-      }
+        },
+        buf_name = {
+          mode = 'unique'
+        },
+      })
     end
   },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   config = function ()
+  --     require("bufferline").setup {
+  --       options = {
+  --         mode = 'buffers',
+  --         diagnostics = "nvim_lsp",
+  --         diagnostics_indicator = function(count, level, _, _)
+  --           local icon = level:match("error") and " " or " "
+  --           return " " .. icon .. count
+  --         end,
+  --         numbers = 'buffer_id',
+  --         separator_style = 'slant',
+  --         highlights = {
+  --           buffer_selected = {
+  --             fg = '#663322',
+  --             italic = true,
+  --           },
+  --         },
+  --         hover = {
+  --           enable = true,
+  --           delay = 200,
+  --           reveal = {'close'}
+  --         }
+  --       }
+  --     }
+  --   end
+  -- },
 
 	{
 		"folke/neodev.nvim",
@@ -320,27 +348,20 @@ require("lazy").setup({
 		ft = "go",
 		dependencies = "mfussenegger/nvim-dap",
 	},
-    "rcarriga/nvim-dap-ui",
+	{
+		"rcarriga/nvim-dap-ui",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "mfussenegger/nvim-dap"
+    },
+	},
   {
     "theHamsta/nvim-dap-virtual-text",
   },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-    end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  },
-
   -- Golang
   {
-    "olexsmir/gopher.nvim",
+    -- "hsequeda/gopher.nvim",
+    dir = "~/projects/lua/gopher.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -357,4 +378,30 @@ require("lazy").setup({
       })
     end
   },
+  require('config.which-key'),
+  require('config.rest-nvim'),
+
+  -- {
+ -- "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("chatgpt").setup()
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "folke/trouble.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- },
+  {
+    "doctorfree/cheatsheet.nvim",
+		config = function ()
+			require("cheatsheet").setup({})
+		end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-lua/popup.nvim",
+    },
+  }
 })

@@ -4,4 +4,5 @@ require 'lspconfig'.clangd.setup{
     base_conf.on_attach(client, bufnr)
   end,
   capabilities = base_conf.capabilities,
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda"}
 }

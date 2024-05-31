@@ -4,7 +4,7 @@ require'lualine'.setup {
     theme = 'nightfox',
     section_separators = {'', ''},
     component_separators = {'', ''},
-    disabled_filetypes = {}
+    disabled_filetypes = {"neo-tree"}
   },
   sections = {
     lualine_a = {"mode" },
@@ -16,8 +16,8 @@ require'lualine'.setup {
       'filetype',
       {"diagnostics", sources = {"nvim_diagnostic"}},
       {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
+        require('noice').api.statusline.mode.get,
+        cond = require('noice').api.statusline.mode.has,
         color = { fg = "#ff9e64" },
       },
 

@@ -6,6 +6,7 @@
 -- for language server setup see: https://github.com/neovim/nvim-lspconfig
 
 local nvim_lsp = require 'lspconfig'
+local utils = require 'lspconfig.util'
 local base_conf = require('config.lsp.base')
 
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -13,13 +14,6 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-
--- lua server
-local sumneko_root_path = ""
-local sumneko_binary = ""
-
-sumneko_root_path = "/usr/bin/lua-language-server"
-sumneko_binary = "/usr/bin/lua-language-server"
 
 nvim_lsp.lua_ls.setup {
     on_attach = base_conf.on_attach,
@@ -87,6 +81,14 @@ nvim_lsp.yamlls.setup {
   }
 }
 
+require'lspconfig'.docker_compose_language_service.setup{
+  on_attach = base_conf.on_attach,
+  capabilities = base_conf.capabilities,
+  filetypes = {"yaml.docker-compose" },
+  root_dir = utils.root_pattern("docker-compose.yaml", "docker-compose.yml", "compose.yaml", "compose.yml"),
+  single_file_support = true,
+}
+
 -- Tailwincss
 -- nvim_lsp.tailwindcss.setup{}
 
@@ -107,3 +109,5 @@ nvim_lsp.pyright.setup{
     }
   }
 }
+
+nvim_lsp.bufls.setup{}

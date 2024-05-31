@@ -26,6 +26,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Add DbSchema to path
 export PATH="/opt/DbSchema:$PATH"
 
+# Add path for binaries installed by Mason.
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
+# Add npm-global to path
+export PATH="$HOME/.npm-global/bin:$PATH"
+
 # Other Paths
 
 # Path to your oh-my-zsh installation.
@@ -91,8 +97,8 @@ alias lg=lazygit
 export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-alias kitty='kitty +kitten themes --reload-in=all Nightfox'
-alias zellij='zellij options --theme nightfox'
+# alias kitty='kitty +kitten themes --reload-in=all Nightfox'
+# alias zellij='zellij options --theme nightfox'
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
@@ -100,7 +106,8 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 alias luamake=/home/hsequeda/lua-language-server/3rd/luamake/luamake
 source /home/hsequeda/.config/broot/launcher/bash/br
 
-
 eval "$(atuin init zsh)"
 
 export GOPRIVATE=github.com/msales
+
+gpath=(~/.zsh.d/ $fpath)

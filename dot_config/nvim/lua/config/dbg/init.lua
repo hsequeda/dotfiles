@@ -28,8 +28,41 @@ require("nvim-dap-virtual-text").setup({
             -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`      })
 })
 
+local get_test_regexp = function ()
+  return coroutine.create(function(dap_run_co)
+    local args = {"-test.run"}
+    vim.ui.input({ prompt = "Args: " }, function(input)
+      for _, value in ipairs(vim.split(input or "", " ")) do
+        table.insert(args, value)
+      end
+      coroutine.resume(dap_run_co, args)
+    end)
+  end)
+end
 
-require("dap-go").setup()
+require("dap-go").setup({
+  dap_configurations = {
+    {
+      type = "go",
+      name = "Debug Test (-test.run ${regexp})",
+      request = "launch",
+      mode = "test",
+      program = "${file}",
+      args = get_test_regexp,
+      buildFlags = "",
+    },
+    {
+      type = "go",
+      name = "Debug Test (-test.run ${regexp}) (go.mod)",
+      request = "launch",
+      mode = "test",
+      program = "./${relativeFileDirname}",
+      args = get_test_regexp,
+      buildFlags = "",
+    },
+  }
+})
+
 require("dapui").setup()
 
 local dap, dapui = require("dap"), require("dapui")
